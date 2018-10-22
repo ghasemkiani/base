@@ -16,6 +16,9 @@ class Base {
 		this.fromString(string);
 	}
 	fromString() {}
+	toString() {
+		return `[object ${this.constructor.name}]`;
+	}
 }
 
 module.exports = {
