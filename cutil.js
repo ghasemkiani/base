@@ -24,6 +24,9 @@ class CUtil extends Base {
 	isInteger(x) {
 		return this.isNumber(x) && (x % 1 === 0);
 	}
+	isFunction(f) {
+		return typeof f === "function";
+	}
 	asString(x) {
 		return this.isNil(x) ? "" : String(x);
 	}
