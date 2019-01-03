@@ -24,8 +24,14 @@ class CUtil extends Base {
 	isInteger(x) {
 		return this.isNumber(x) && (x % 1 === 0);
 	}
-	isFunction(f) {
-		return typeof f === "function";
+	isObject(x) {
+		return x !== null && typeof x === "object";
+	}
+	isArray(x) {
+		return Array.isArray(x);
+	}
+	isFunction(x) {
+		return typeof x === "function";
 	}
 	asString(x) {
 		return this.isNil(x) ? "" : String(x);
@@ -38,6 +44,20 @@ class CUtil extends Base {
 	}
 	asBoolean(x) {
 		return x instanceof Boolean ? x.valueOf() : !!x;
+	}
+	asObject(x) {
+		return Object(x);
+	}
+	asArray(x) {
+		var array;
+		if(this.isArray(x)) {
+			array = x;
+		} else if(this.isString(x) || (this.isObject(x) && "length" in x)) {
+			array = Array.prototype.slice.call(x, 0);
+		} else {
+			array = [];
+		}
+		return array;
 	}
 	assign(target, ...rest) {
 		// only enumerable keys
