@@ -71,7 +71,7 @@ const serializable = {
 		await fs.promises.writeFile(this.fn, this.stringJson , {encoding: this.cs});
 	},
 	get dataUri() {
-		return `data:${this.mime};base64,${Buffer.from(this.string, "utf8").toString("base64")}`;
+		return `data:${this.mime};base64,${Buffer.from(this.string, this.cs).toString("base64")}`;
 	},
 	set dataUri(dataUri) {
 		let aa = /data:([^;,]*)(;base64)?,(.*)/.exec(dataUri);
@@ -79,7 +79,7 @@ const serializable = {
 			this.mime = aa[1];
 			let string = aa[3];
 			if(aa[2]) {
-				string = Buffer.from(string, "base64").toString("utf8");
+				string = Buffer.from(string, "base64").toString(this.cs);
 			}
 			this.string = string;
 		}
