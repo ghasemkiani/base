@@ -1,9 +1,24 @@
 //	@ghasemkiani/commonbase/serializable
 
 const fs = require("fs");
+const path = require("path");
+
+const mimeTypes = require("mime-types");
+
 const {cutil} = require("@ghasemkiani/commonbase/cutil");
 
 const serializable = {
+	_mime: null,
+	get mime() {
+		let mime = this._mime;
+		if(!mime && this.fn) {
+			mime = mimeTypes.lookup(this.fn);
+		}
+		return mime || "text/plain";
+	},
+	set mime(mime) {
+		this._mime = mime;
+	},
 	_string: null,
 	fromString(string) {
 		this._string = string;
@@ -54,6 +69,20 @@ const serializable = {
 	},
 	async toWriteJson() {
 		await fs.promises.writeFile(this.fn, this.stringJson , {encoding: this.cs});
+	},
+	get dataUri() {
+		return `data:${this.mime};base64,${Buffer.from(this.string, "utf8").toString("base64")}`;
+	},
+	set dataUri(dataUri) {
+		let aa = /data:([^;,]*)(;base64)?,(.*)/.exec(dataUri);
+		if(aa) {
+			this.mime = aa[1];
+			let string = aa[3];
+			if(aa[2]) {
+				string = Buffer.from(string, "base64").toString("utf8");
+			}
+			this.string = string;
+		}
 	},
 };
 
