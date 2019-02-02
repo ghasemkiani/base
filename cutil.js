@@ -78,6 +78,9 @@ class CUtil extends Base {
 		this.extend(Class.prototype, ...interfaces);
 		return Class;
 	}
+	global() {
+		return Function("return this")();
+	}
 }
 
 let cutil = new CUtil();
