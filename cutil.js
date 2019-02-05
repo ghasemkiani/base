@@ -81,6 +81,19 @@ class CUtil extends Base {
 	global() {
 		return Function("return this")();
 	}
+	rand(n) {
+		n = n || 1000;
+		return Math.floor(Math.random() * n);
+	}
+	srand(n) {
+		n = n || 8;
+		let a = "a".charCodeAt(0);
+		let s = "";
+		for (let i = 0; i < n; i++) {
+			s += String.fromCharCode(a + this.rand(26));
+		}
+		return s;
+	}
 }
 
 let cutil = new CUtil();
