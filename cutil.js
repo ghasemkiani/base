@@ -94,6 +94,26 @@ class CUtil extends Base {
 		}
 		return s;
 	}
+	makeRelativeUri(uriLink, uriPage) {
+		if(!uriPage) {
+			return uriLink;
+		}
+		uriLink = this.asString(uriLink);
+		uriPage = this.asString(uriPage);
+		// has protocol
+		if(/^(([^:/]*:\/\/)|(\/\/))/i.test(uriLink)) {
+			return uriLink;
+		}
+		var uriPageParts = uriPage.split("/");
+		var uriLinkParts = uriLink.split("/");
+		var n;
+		for (n = 0; n < Math.min(uriPageParts.length - 1, uriLinkParts.length - 1); n++) {
+			if(uriPageParts[n] !== uriLinkParts[n]) {
+				break;
+			}
+		}
+		return Array(uriPageParts.length - n - 1).fill(0).map(a => "..").concat(uriLinkParts.slice(n)).join("/");
+	}
 }
 
 let cutil = new CUtil();

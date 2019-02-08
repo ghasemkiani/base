@@ -197,6 +197,7 @@ class Length extends Quantity {
 		return "m";
 	}
 	defKMap() {
+		let length = this;
 		return {
 			"nm": 1e-9,
 			"um": 1e-6,
@@ -204,6 +205,10 @@ class Length extends Quantity {
 			"mm": 1e-3,
 			"cm": 1e-2,
 			"in": 2.54 * 1e-2,
+			"pt": (2.54 * 1e-2) / 72,
+			get px() {
+				return (2.54 * 1e-2) / length.dpi;
+			},
 			"dm": 1e-1,
 			"ft": 12 * 2.54 * 1e-2,
 			"yd": 3 * 12 * 2.54 * 1e-2,
@@ -220,6 +225,9 @@ class Length extends Quantity {
 		};
 	}
 }
+cutil.extend(Length.prototype, {
+	dpi: 72,
+});
 
 let quantity = new (class extends Base {
 	time(...args) {

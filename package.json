@@ -1,11 +1,11 @@
 {
 	"name": "@ghasemkiani/commonbase",
-	"version": "1.9.0",
+	"version": "1.11.0",
 	"description": "Common base functionality for NodeJS programming",
 	"repository": "github:ghasemkiani/commonbase",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "mocha"
 	},
 	"keywords": [
 		"javascript",
@@ -23,5 +23,8 @@
 		"transform": [
 			"babelify"
 		]
+	},
+	"devDependencies": {
+		"mocha": "^5.2.0"
 	}
 }
