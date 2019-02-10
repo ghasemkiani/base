@@ -50,24 +50,28 @@ const serializable = {
 		this.string = fs.readFileSync(this.fn, {encoding: this.cs});
 	},
 	write() {
+		fs.mkdirSync(path.dirname(this.fn), {recursive: true});
 		fs.writeFileSync(this.fn, this.string, {encoding: this.cs});
 	},
 	async toRead() {
 		this.string = await fs.promises.readFile(this.fn, {encoding: this.cs});
 	},
 	async toWrite() {
+		await fs.promises.mkdir(path.dirname(this.fn), {recursive: true});
 		await fs.promises.writeFile(this.fn, this.string, {encoding: this.cs});
 	},
 	readJson() {
 		this.stringJson = fs.readFileSync(this.fn, {encoding: this.cs});
 	},
 	writeJson() {
+		fs.mkdirSync(path.dirname(this.fn), {recursive: true});
 		fs.writeFileSync(this.fn, this.stringJson , {encoding: this.cs});
 	},
 	async toReadJson() {
 		this.stringJson  = await fs.promises.readFile(this.fn, {encoding: this.cs});
 	},
 	async toWriteJson() {
+		await fs.promises.mkdir(path.dirname(this.fn), {recursive: true});
 		await fs.promises.writeFile(this.fn, this.stringJson , {encoding: this.cs});
 	},
 	get dataUri() {
