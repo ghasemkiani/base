@@ -1,6 +1,6 @@
 {
   "name": "@ghasemkiani/commonbase",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "description": "Common base functionality for NodeJS programming",
   "repository": "github:ghasemkiani/commonbase",
   "main": "index.js",
