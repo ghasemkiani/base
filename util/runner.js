@@ -33,17 +33,23 @@ const irunner = {
 	async toStart() {
 		if (this._state === IDLE) {
 			this.state = STARTED;
-			await this.toRun();
+			await this.toDoStart();
 		}
 		return this;
+	},
+	async toDoStart() {
+		await this.toRun();
 	},
 	run() {},
 	start() {
 		if (this._state === IDLE) {
 			this.state = STARTED;
-			this.run();
+			this.doStart();
 		}
 		return this;
+	},
+	doStart() {
+		this.run();
 	},
 	pause() {
 		if (this._state === STARTED) {
