@@ -1,6 +1,8 @@
 //	@ghasemkiani/commonbase/base
 
-class Base {
+const {EventEmitter} = require("events");
+
+class Base extends EventEmitter {
 	constructor(arg) {
 		if(typeof arg === "string") {
 			arg = {
@@ -21,6 +23,4 @@ class Base {
 	}
 }
 
-module.exports = {
-	Base,
-};
+module.exports = {Base};
