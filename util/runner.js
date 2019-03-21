@@ -54,7 +54,7 @@ const irunner = {
 		}
 		return this;
 	},
-	toggle() {
+	togglePause() {
 		if (this._state === STARTED) {
 			this.state = PAUSED;
 		} else if (this._state === PAUSED) {
@@ -87,7 +87,7 @@ const irunner = {
 	isRunning() {
 		return this.isStarted() || this.isPaused();
 	},
-	check() {
+	checkRunning() {
 		if (!this.isRunning()) {
 			throw new Error("Interrupted");
 		}
