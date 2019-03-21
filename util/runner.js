@@ -17,8 +17,11 @@ const irunner = {
 			let event = {
 				defaultPrevented: false,
 				target: this,
-				oldState: this,
-				state: state,
+				oldState: cutil.asString(this._state),
+				state: cutil.asString(state),
+				preventDefault() {
+					this.defaultPrevented = true;
+				},
 			};
 			this.emit("state-change", event);
 			if (!event.defaultPrevented) {
