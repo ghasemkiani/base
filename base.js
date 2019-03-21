@@ -4,10 +4,9 @@ const {EventEmitter} = require("events");
 
 class Base extends EventEmitter {
 	constructor(arg) {
+		super();
 		if(typeof arg === "string") {
-			arg = {
-				string: arg,
-			};
+			arg = {string: arg};
 		}
 		Object.assign(this, arg);
 	}
