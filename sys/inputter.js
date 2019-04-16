@@ -39,11 +39,26 @@ class Inputter extends Base {
 			}
 		});
 	}
-	async toReadLineTimeout (ms) {
-		let handle = setTimeout(() => this.close(), ms);
-		let line = await this.toReadLine();
-		clearTimeout(handle);
-		return line;
+	async toReadLineTimeout(ms, prompt) {
+		return new Promise((resolve, reject) => {
+			try {
+				let rl = readline.createInterface({
+					input: process.stdin,
+					output: process.stdout,
+				});
+				let handle = setTimeout(() => {
+					rl.close();
+					resolve(null);
+				}, ms);
+				rl.question(cutil.asString(prompt), answer => {
+					clearTimeout(handle);
+					rl.close();
+					resolve(answer);
+				});
+			} catch(e) {
+				reject(e);
+			}
+		});
 	}
 }
 
