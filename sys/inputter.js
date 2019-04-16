@@ -39,6 +39,12 @@ class Inputter extends Base {
 			}
 		});
 	}
+	async toReadLineTimeout (ms) {
+		let handle = setTimeout(() => this.close(), ms);
+		let line = await this.toReadLine();
+		clearTimeout(handle);
+		return line;
+	}
 }
 
 module.exports = {
