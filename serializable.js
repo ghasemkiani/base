@@ -8,13 +8,14 @@ const mimeTypes = require("mime-types");
 const {cutil} = require("@ghasemkiani/commonbase/cutil");
 
 const serializable = {
+	defaultMime: "text/plain",
 	_mime: null,
 	get mime() {
 		let mime = this._mime;
 		if(!mime && this.fn) {
 			mime = mimeTypes.lookup(this.fn);
 		}
-		return mime || "text/plain";
+		return mime || this.defaultMime;
 	},
 	set mime(mime) {
 		this._mime = mime;
