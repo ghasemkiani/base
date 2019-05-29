@@ -1,6 +1,6 @@
 {
   "name": "@ghasemkiani/commonbase",
-  "version": "1.24.0",
+  "version": "1.24.1",
   "description": "Common base functionality for NodeJS programming",
   "repository": "github:ghasemkiani/commonbase",
   "main": "index.js",
@@ -15,9 +15,9 @@
   "license": "MIT",
   "dependencies": {
     "http-proxy-agent": "^2.1.0",
-    "mime-types": "^2.1.21",
+    "mime-types": "^2.1.24",
     "r2": "^2.0.1",
-    "socks-proxy-agent": "^4.0.1"
+    "socks-proxy-agent": "^4.0.2"
   },
   "browserify": {
     "transform": [
