@@ -114,6 +114,15 @@ class CUtil extends Base {
 		}
 		return Array(uriPageParts.length - n - 1).fill(0).map(a => "..").concat(uriLinkParts.slice(n)).join("/");
 	}
+	toDashed(name) {
+		return !name ? "" : String(name).replace(/[A-Z]/g, (all) => "-" + all.toLowerCase());
+	}
+	toCamelCase(name) {
+		return !name ? "" : String(name).replace(/\-(.)/g, (all, letter) => letter.toUpperCase());
+	}
+	toFirstUpperCase(name) {
+		return !name ? "" : String(name).replace(/^(.)/, (all, letter) => letter.toUpperCase());
+	}
 }
 
 let cutil = new CUtil();
