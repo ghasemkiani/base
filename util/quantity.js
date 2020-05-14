@@ -110,6 +110,9 @@ class Quantity extends Base {
 		this._kMap = kMap;
 	}
 	delta(delta) {
+		if(delta instanceof Quantity) {
+			delta = delta.u(this.u()).n();
+		}
 		this.value += delta * this.k;
 		return this;
 	}
