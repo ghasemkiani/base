@@ -94,6 +94,9 @@ class CUtil extends Base {
 		}
 		return s;
 	}
+	arrn(n) {
+		return Array(...new Array(n)).map((empty, index) => index);
+	}
 	makeRelativeUri(uriLink, uriPage) {
 		if(!uriPage) {
 			return uriLink;
