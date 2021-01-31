@@ -126,6 +126,16 @@ class CUtil extends Base {
 	toFirstUpperCase(name) {
 		return !name ? "" : String(name).replace(/^(.)/, (all, letter) => letter.toUpperCase());
 	}
+	shuffle(array) {
+		let m = array.length;
+		while (m > 0) {
+			let i = Math.floor(Math.random() * m--);
+			let temp = array[m];
+			array[m] = array[i];
+			array[i] = temp;
+		}
+		return array;
+	}
 }
 
 let cutil = new CUtil();

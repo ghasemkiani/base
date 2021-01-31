@@ -63,7 +63,7 @@ const serializable = {
 	async toWrite() {
 		let dirname = path.dirname(this.fn);
 		if(!fs.existsSync(dirname)) {
-			await fs.mkdir(dirname, {recursive: true});
+			await fs.promises.mkdir(dirname, {recursive: true});
 		}
 		await fs.promises.writeFile(this.fn, this.string, {encoding: this.cs});
 	},
@@ -83,7 +83,7 @@ const serializable = {
 	async toWriteJson() {
 		let dirname = path.dirname(this.fn);
 		if(!fs.existsSync(dirname)) {
-			await fs.mkdir(dirname, {recursive: true});
+			await fs.promises.mkdir(dirname, {recursive: true});
 		}
 		await fs.promises.writeFile(this.fn, this.stringJson , {encoding: this.cs});
 	},
