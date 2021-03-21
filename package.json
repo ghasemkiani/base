@@ -1,6 +1,6 @@
 {
   "name": "@ghasemkiani/commonbase",
-  "version": "1.28.2",
+  "version": "1.28.3",
   "description": "Common base functionality for NodeJS programming",
   "repository": {
     "type": "git",
