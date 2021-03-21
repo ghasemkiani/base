@@ -1,8 +1,11 @@
 {
   "name": "@ghasemkiani/commonbase",
-  "version": "1.28.1",
+  "version": "1.28.2",
   "description": "Common base functionality for NodeJS programming",
-  "repository": "github:ghasemkiani/commonbase",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghasemkiani/commonbase.git"
+  },
   "main": "index.js",
   "scripts": {},
   "keywords": [
@@ -22,5 +25,9 @@
       "babelify"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/ghasemkiani/commonbase/issues"
+  },
+  "homepage": "https://github.com/ghasemkiani/commonbase#readme"
 }

@@ -15,6 +15,9 @@ class CUtil extends Base {
 	isEmptyString(x) {
 		return x === "";
 	}
+	isNilOrEmptyString(x) {
+		return this.isNil(x) || this.isEmptyString(x);
+	}
 	isString(x) {
 		return typeof x === "string";
 	}
