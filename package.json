@@ -1,6 +1,6 @@
 {
   "name": "@ghasemkiani/commonbase",
-  "version": "1.28.3",
+  "version": "1.29.0",
   "description": "Common base functionality for NodeJS programming",
   "repository": {
     "type": "git",
@@ -15,10 +15,7 @@
   "author": "Ghasem Kiani",
   "license": "MIT",
   "dependencies": {
-    "http-proxy-agent": "^2.1.0",
-    "mime-types": "^2.1.26",
-    "r2": "^2.0.1",
-    "socks-proxy-agent": "^4.0.2"
+    "mime-types": "^2.1.26"
   },
   "browserify": {
     "transform": [
