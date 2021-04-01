@@ -1,4 +1,4 @@
-# commonbase
+# base
 Base functionality for my NodeJS programs
 
 ---
