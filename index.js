@@ -1,13 +1,9 @@
-//	@ghasemkiani/commonbase/index
+//	@ghasemkiani/base/index
 
-const base = require("@ghasemkiani/commonbase/base");
-const inputter = require("@ghasemkiani/commonbase/sys/inputter");
-const cutil = require("@ghasemkiani/commonbase/cutil");
+const base = require("@ghasemkiani/base/obj");
+const cutil = require("@ghasemkiani/base/cutil");
 
 module.exports = {
 	base,
-	sys: {
-		inputter,
-	},
 	cutil,
 };

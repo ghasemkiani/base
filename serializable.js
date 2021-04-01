@@ -1,11 +1,11 @@
-//	@ghasemkiani/commonbase/serializable
+//	@ghasemkiani/base/serializable
 
 const fs = require("fs");
 const path = require("path");
 
 const mimeTypes = require("mime-types");
 
-const {cutil} = require("@ghasemkiani/commonbase/cutil");
+const {cutil} = require("@ghasemkiani/base/cutil");
 
 const serializable = {
 	defaultMime: "text/plain",

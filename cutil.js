@@ -1,6 +1,6 @@
-//	@ghasemkiani/commonbase/cutil
+//	@ghasemkiani/base/cutil
 
-const {Base} = require("@ghasemkiani/commonbase/base");
+const {Obj: Base} = require("@ghasemkiani/base/obj");
 
 class CUtil extends Base {
 	isNull(x) {

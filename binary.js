@@ -1,8 +1,8 @@
-//	@ghasemkiani/commonbase/binary
+//	@ghasemkiani/base/binary
 
-const {cutil} = require("@ghasemkiani/commonbase/cutil");
-const {Base} = require("@ghasemkiani/commonbase/base");
-const {serializable} = require("@ghasemkiani/commonbase/serializable");
+const {cutil} = require("@ghasemkiani/base/cutil");
+const {Obj: Base} = require("@ghasemkiani/base/obj");
+const {serializable} = require("@ghasemkiani/base/serializable");
 
 class Binary extends cutil.mixin(Base, serializable) {
 	fromBuffer(buffer) {

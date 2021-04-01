@@ -1,10 +1,10 @@
 {
-  "name": "@ghasemkiani/commonbase",
-  "version": "1.29.0",
-  "description": "Common base functionality for NodeJS programming",
+  "name": "@ghasemkiani/base",
+  "version": "2.0.0",
+  "description": "Base functionality for my NodeJS programs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ghasemkiani/commonbase.git"
+    "url": "git+https://github.com/ghasemkiani/base.git"
   },
   "main": "index.js",
   "scripts": {},
@@ -24,7 +24,7 @@
   },
   "devDependencies": {},
   "bugs": {
-    "url": "https://github.com/ghasemkiani/commonbase/issues"
+    "url": "https://github.com/ghasemkiani/base/issues"
   },
-  "homepage": "https://github.com/ghasemkiani/commonbase#readme"
+  "homepage": "https://github.com/ghasemkiani/base#readme"
 }

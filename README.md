@@ -1,5 +1,5 @@
 # commonbase
-Common base functionality for NodeJS programming
+Base functionality for my NodeJS programs
 
 ---
 &copy; 2018, Ghasem Kiani, M.D.
