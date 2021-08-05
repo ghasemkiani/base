@@ -1,9 +1,15 @@
 //	@ghasemkiani/base/index
 
-const base = require("@ghasemkiani/base/obj");
-const cutil = require("@ghasemkiani/base/cutil");
+const {Obj} = require("@ghasemkiani/base/obj");
+const {CUtil, cutil} = require("@ghasemkiani/base/cutil");
+const {serializable} = require("@ghasemkiani/base/serializable");
+const {Binary} = require("@ghasemkiani/base/binary");
+const {Textual} = require("@ghasemkiani/base/textual");
 
 module.exports = {
-	base,
-	cutil,
+	Obj,
+	CUtil, cutil,
+	serializable,
+	Binary,
+	Textual,
 };
