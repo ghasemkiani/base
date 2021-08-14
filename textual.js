@@ -1,10 +1,10 @@
 //	@ghasemkiani/base/textual
 
-const {cutil} = require("@ghasemkiani/base/cutil");
-const {Obj: Base} = require("@ghasemkiani/base/obj");
-const {serializable} = require("@ghasemkiani/base/serializable");
+import {cutil} from "./cutil.js";
+import {Obj} from "./obj.js";
+import {serializable} from "./serializable.js";
 
-class Textual extends cutil.mixin(Base, serializable) {
+class Textual extends cutil.mixin(Obj, serializable) {
 	get json() {
 		return JSON.parse(this.string);
 	}
@@ -16,4 +16,4 @@ cutil.extend(Textual.prototype, {
 	//
 });
 
-module.exports = {Textual};
+export {Textual};

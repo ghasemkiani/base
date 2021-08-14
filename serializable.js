@@ -1,11 +1,11 @@
 //	@ghasemkiani/base/serializable
 
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const mimeTypes = require("mime-types");
+import mimeTypes from "mime-types";
 
-const {cutil} = require("@ghasemkiani/base/cutil");
+import {cutil} from "./cutil.js";
 
 const serializable = {
 	defaultMime: "text/plain",
@@ -104,4 +104,4 @@ const serializable = {
 	},
 };
 
-module.exports = {serializable};
+export {serializable};

@@ -1,6 +1,6 @@
 //	@ghasemkiani/base/obj
 
-const {EventEmitter} = require("events");
+import {EventEmitter} from "events";
 
 class Obj extends EventEmitter {
 	constructor(arg) {
@@ -22,4 +22,4 @@ class Obj extends EventEmitter {
 	}
 }
 
-module.exports = {Obj};
+export {Obj};

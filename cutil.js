@@ -1,8 +1,8 @@
 //	@ghasemkiani/base/cutil
 
-const {Obj: Base} = require("@ghasemkiani/base/obj");
+import {Obj} from "./obj.js";
 
-class CUtil extends Base {
+class CUtil extends Obj {
 	isNull(x) {
 		return x === null;
 	}
@@ -75,9 +75,9 @@ class CUtil extends Base {
 		}
 		return target;
 	}
-	mixin(Base, ...interfaces) {
+	mixin(Obj, ...interfaces) {
 		// interfaces are ordinary objects, not classes
-		let Class = class extends Base {};
+		let Class = class extends Obj {};
 		this.extend(Class.prototype, ...interfaces);
 		return Class;
 	}
@@ -143,7 +143,4 @@ class CUtil extends Base {
 
 let cutil = new CUtil();
 
-module.exports = {
-	CUtil,
-	cutil,
-};
+export {CUtil, cutil};

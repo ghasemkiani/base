@@ -1,12 +1,12 @@
 //	@ghasemkiani/base/index
 
-const {Obj} = require("@ghasemkiani/base/obj");
-const {CUtil, cutil} = require("@ghasemkiani/base/cutil");
-const {serializable} = require("@ghasemkiani/base/serializable");
-const {Binary} = require("@ghasemkiani/base/binary");
-const {Textual} = require("@ghasemkiani/base/textual");
+import {Obj} from "./obj.js";
+import {CUtil, cutil} from "./cutil.js";
+import {serializable} from "./serializable.js";
+import {Binary} from "./binary.js";
+import {Textual} from "./textual.js";
 
-module.exports = {
+export {
 	Obj,
 	CUtil, cutil,
 	serializable,

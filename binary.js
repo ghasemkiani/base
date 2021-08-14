@@ -1,10 +1,10 @@
 //	@ghasemkiani/base/binary
 
-const {cutil} = require("@ghasemkiani/base/cutil");
-const {Obj: Base} = require("@ghasemkiani/base/obj");
-const {serializable} = require("@ghasemkiani/base/serializable");
+import {cutil} from "./cutil.js";
+import {Obj} from "./obj.js";
+import {serializable} from "./serializable.js";
 
-class Binary extends cutil.mixin(Base, serializable) {
+class Binary extends cutil.mixin(Obj, serializable) {
 	fromBuffer(buffer) {
 		this.string = Buffer.toString(this.cs);
 	}
@@ -16,4 +16,4 @@ cutil.extend(Binary.prototype, {
 	cs: "binary",
 });
 
-module.exports = {Binary};
+export {Binary};

@@ -1,11 +1,12 @@
 {
   "name": "@ghasemkiani/base",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Base functionality for my NodeJS programs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ghasemkiani/base.git"
   },
+  "type": "module",
   "main": "index.js",
   "scripts": {},
   "keywords": [
