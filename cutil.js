@@ -103,8 +103,7 @@ class CUtil extends Obj {
 	arrn(n) {
 		return Array(...new Array(n)).map((empty, index) => index);
 	}
-    getCurrentModuleFilename() {
-        let url = import.meta.url;
+    getUrlFilename(url) {
         let uRL = new URL(url);
         let fn = uRL.pathname;
         if (/win/i.test(os.type())) {
