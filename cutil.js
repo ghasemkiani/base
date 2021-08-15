@@ -100,6 +100,18 @@ class CUtil extends Obj {
 	arrn(n) {
 		return Array(...new Array(n)).map((empty, index) => index);
 	}
+    getCurrentModuleFilename() {
+        let url = import.meta.url;
+        let uRL = new URL(url);
+        let fn = uRL.pathname;
+        if (/win/i.test(os.type())) {
+            if (/^\/.\:/.test(fn)) {
+                fn = fn.substring(1);
+            }
+            fn = fn.replace(/\//g, "\\");
+        }
+        return fn;
+    }
 	makeRelativeUri(uriLink, uriPage) {
 		if(!uriPage) {
 			return uriLink;
