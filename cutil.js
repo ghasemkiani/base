@@ -1,5 +1,8 @@
 //	@ghasemkiani/base/cutil
 
+import os from "os";
+import path from "path";
+
 import {Obj} from "./obj.js";
 
 class CUtil extends Obj {
