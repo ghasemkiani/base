@@ -1,7 +1,8 @@
 //	@ghasemkiani/base/cutil
 
-import os from "os";
-import path from "path";
+import os from "node:os";
+import path from "node:path";
+import url from "node:url";
 
 import {Obj} from "./obj.js";
 
@@ -133,6 +134,9 @@ class CUtil extends Obj {
 			}
 		}
 		return Array(uriPageParts.length - n - 1).fill(0).map(a => "..").concat(uriLinkParts.slice(n)).join("/");
+	}
+	getCurrentModuleDirectory() {
+		return path.dirname(url.fileURLToPath(import.meta.url));
 	}
 	toDashed(name) {
 		return !name ? "" : String(name).replace(/[A-Z]/g, (all) => "-" + all.toLowerCase());
