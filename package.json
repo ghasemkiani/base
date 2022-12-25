@@ -1,6 +1,6 @@
 {
 	"name": "@ghasemkiani/base",
-	"version": "3.3.2",
+	"version": "3.3.3",
 	"description": "Base functionality for my NodeJS programs",
 	"repository": {
 		"type": "git",
@@ -15,15 +15,6 @@
 	],
 	"author": "Ghasem Kiani",
 	"license": "MIT",
-	"dependencies": {
-		"mime-types": "^2.1.26"
-	},
-	"browserify": {
-		"transform": [
-			"babelify"
-		]
-	},
-	"devDependencies": {},
 	"bugs": {
 		"url": "https://github.com/ghasemkiani/base/issues"
 	},

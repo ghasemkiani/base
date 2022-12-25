@@ -1,9 +1,7 @@
 //	@ghasemkiani/base/serializable
 
-import fs from "fs";
-import path from "path";
-
-import mimeTypes from "mime-types";
+import fs from "node:fs";
+import path from "node:path";
 
 import {cutil} from "./cutil.js";
 
@@ -13,12 +11,52 @@ const serializable = {
 	get mime() {
 		let mime = this._mime;
 		if(!mime && this.fn) {
-			mime = mimeTypes.lookup(this.fn);
+			mime = this.lookupMime(path.extname(this.fn));
 		}
 		return mime || this.defaultMime;
 	},
 	set mime(mime) {
 		this._mime = mime;
+	},
+	lookupMime(ext) {
+		ext = cutil.asString(ext).toLowerCase();
+		return "" ||
+			["gzip"].includes(ext) ? "application/gz" :
+			["js","mjs"].includes(ext) ? "application/javascript" :
+			["cjs"].includes(ext) ? "application/node" :
+			["xml","xsl","xsd","rng"].includes(ext) ? "application/xml" :
+			["xhtml","xht"].includes(ext) ? "application/xhtml+xml" :
+			["svg","svgz"].includes(ext) ? "application/svg+xml" :
+			["rar"].includes(ext) ? "application/vnd.rar" :
+			["dtd"].includes(ext) ? "application/xml-dtd" :
+			["zip"].includes(ext) ? "application/zip" :
+			["bmp"].includes(ext) ? "image/bmp" :
+			["emf"].includes(ext) ? "image/emf" :
+			["gif"].includes(ext) ? "image/gif" :
+			["jpeg","jpg","jpe"].includes(ext) ? "image/jpeg" :
+			["png"].includes(ext) ? "image/png" :
+			["tif","tiff"].includes(ext) ? "image/tiff" :
+			["psd"].includes(ext) ? "image/vnd.adobe.photoshop" :
+			["djvu","djv"].includes(ext) ? "image/djvu" :
+			["ico"].includes(ext) ? "image/x-icon" :
+			["mdi"].includes(ext) ? "image/vnd.ms-modi" :
+			["webp"].includes(ext) ? "image/webp" :
+			["wmf"].includes(ext) ? "image/wmf" :
+			["css"].includes(ext) ? "text/css" :
+			["html","htm","shtml"].includes(ext) ? "text/html" :
+			["markdown","md"].includes(ext) ? "text/markdown" :
+			["mml"].includes(ext) ? "text/mathml" :
+			["rtf"].includes(ext) ? "text/rtf" :
+			["uri","uris","urls"].includes(ext) ? "text/uri-list" :
+			["vcard"].includes(ext) ? "text/vcard" :
+			["sub"].includes(ext) ? "text/vnd.dvb.subtitle" :
+			["java"].includes(ext) ? "text/x-java-source" :
+			["mkd"].includes(ext) ? "text/x-markdown" :
+			["p","pas"].includes(ext) ? "text/x-pascal" :
+			["srt"].includes(ext) ? "text/x-subrip" :
+			["vcf"].includes(ext) ? "text/x-vcard" :
+			["txt","text","conf","def","list","log","in","ini"].includes(ext) ? "text/plain" :
+			"application/octet-stream";
 	},
 	_string: null,
 	fromString(string) {
