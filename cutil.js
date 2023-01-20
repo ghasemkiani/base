@@ -86,7 +86,7 @@ class CUtil extends Obj {
 		return Class;
 	}
 	global() {
-		return Function("return this")();
+		return (new Function("return this;"))();
 	}
 	rand(n) {
 		n = n || 1000;

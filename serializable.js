@@ -23,6 +23,7 @@ const serializable = {
 		return "" ||
 			["gzip"].includes(ext) ? "application/gz" :
 			["js","mjs"].includes(ext) ? "application/javascript" :
+			["json"].includes(ext) ? "application/json" :
 			["cjs"].includes(ext) ? "application/node" :
 			["xml","xsl","xsd","rng"].includes(ext) ? "application/xml" :
 			["xhtml","xht"].includes(ext) ? "application/xhtml+xml" :
@@ -56,7 +57,7 @@ const serializable = {
 			["srt"].includes(ext) ? "text/x-subrip" :
 			["vcf"].includes(ext) ? "text/x-vcard" :
 			["txt","text","conf","def","list","log","in","ini"].includes(ext) ? "text/plain" :
-			"application/octet-stream";
+			null;
 	},
 	_string: null,
 	fromString(string) {
@@ -126,7 +127,7 @@ const serializable = {
 		await fs.promises.writeFile(this.fn, this.stringJson , {encoding: this.cs});
 	},
 	get dataUri() {
-		let cs = /utf-?8/i.test(this.cs) ? ";charset=UTF-8" : "";
+		let cs = /UTF-?8/i.test(this.cs) ? ";charset=UTF-8" : "";
 		return `data:${this.mime}${cs};base64,${Buffer.from(this.string, this.cs).toString("base64")}`;
 	},
 	set dataUri(dataUri) {

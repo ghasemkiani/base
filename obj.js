@@ -1,6 +1,6 @@
 //	@ghasemkiani/base/obj
 
-import {EventEmitter} from "events";
+import {EventEmitter} from "node:events";
 
 class Obj extends EventEmitter {
 	constructor(arg) {
