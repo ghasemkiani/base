@@ -1,8 +1,6 @@
 //	@ghasemkiani/base/obj
 
-import {EventEmitter} from "node:events";
-
-class Obj extends EventEmitter {
+class Obj extends Object {
 	constructor(arg) {
 		super();
 		if(typeof arg === "string") {

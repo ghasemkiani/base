@@ -22,6 +22,12 @@ class CUtil extends Obj {
 	isNilOrEmptyString(x) {
 		return this.isNil(x) || this.isEmptyString(x);
 	}
+	na(x) {
+		return this.isNilOrEmptyString(x);
+	}
+	a(x) {
+		return !this.na(x);
+	}
 	isString(x) {
 		return typeof x === "string";
 	}
@@ -153,6 +159,9 @@ class CUtil extends Obj {
 			array[i] = temp;
 		}
 		return array;
+	}
+	clone(x) {
+		return structuredClone(x);
 	}
 }
 
