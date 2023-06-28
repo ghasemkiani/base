@@ -88,6 +88,7 @@ const serializable = {
 	cs: "utf8",
 	read() {
 		this.string = fs.readFileSync(this.fn, {encoding: this.cs});
+		return this;
 	},
 	write() {
 		let dirname = path.dirname(this.fn);
@@ -95,9 +96,11 @@ const serializable = {
 			fs.mkdirSync(dirname, {recursive: true});
 		}
 		fs.writeFileSync(this.fn, this.string, {encoding: this.cs});
+		return this;
 	},
 	async toRead() {
 		this.string = await fs.promises.readFile(this.fn, {encoding: this.cs});
+		return this;
 	},
 	async toWrite() {
 		let dirname = path.dirname(this.fn);
@@ -105,9 +108,11 @@ const serializable = {
 			await fs.promises.mkdir(dirname, {recursive: true});
 		}
 		await fs.promises.writeFile(this.fn, this.string, {encoding: this.cs});
+		return this;
 	},
 	readJson() {
 		this.stringJson = fs.readFileSync(this.fn, {encoding: this.cs});
+		return this;
 	},
 	writeJson() {
 		let dirname = path.dirname(this.fn);
@@ -115,9 +120,11 @@ const serializable = {
 			fs.mkdirSync(dirname, {recursive: true});
 		}
 		fs.writeFileSync(this.fn, this.stringJson , {encoding: this.cs});
+		return this;
 	},
 	async toReadJson() {
 		this.stringJson  = await fs.promises.readFile(this.fn, {encoding: this.cs});
+		return this;
 	},
 	async toWriteJson() {
 		let dirname = path.dirname(this.fn);
@@ -125,6 +132,7 @@ const serializable = {
 			await fs.promises.mkdir(dirname, {recursive: true});
 		}
 		await fs.promises.writeFile(this.fn, this.stringJson , {encoding: this.cs});
+		return this;
 	},
 	get dataUri() {
 		let cs = /UTF-?8/i.test(this.cs) ? ";charset=UTF-8" : "";
