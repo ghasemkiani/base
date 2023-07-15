@@ -58,6 +58,13 @@ class CUtil extends Obj {
 	asBoolean(x) {
 		return x instanceof Boolean ? x.valueOf() : !!x;
 	}
+	asBooleanFromString(x) {
+		x = this.asString(x).trim();
+		return /true/i.test(x) ? true : /false/i.test(x) ? false : 
+			/yes/i.test(x) ? true : /no/i.test(x) ? false : 
+			/on/i.test(x) ? true : /off/i.test(x) ? false : 
+			null;
+	}
 	asObject(x) {
 		return Object(x);
 	}
@@ -162,6 +169,18 @@ class CUtil extends Obj {
 	}
 	clone(x) {
 		return structuredClone(x);
+	}
+	zip(...rest) {
+		let arrs = rest.map(arg => this.asArray(arg));
+		let n = Math.max(...arrs.map(arr => arr.length));
+		let result = [];
+		for (let i = 0; i < n; i++) {
+			result[i] = arrs.map(arr => arr[i]);
+		}
+		return result;
+	}
+	range(n) {
+		return Array(...new Array(n)).map((x, i) => i);
 	}
 }
 
