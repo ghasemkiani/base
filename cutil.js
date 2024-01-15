@@ -99,7 +99,8 @@ class CUtil extends Obj {
 		return Class;
 	}
 	global() {
-		return (new Function("return this;"))();
+		// return (new Function("return this;"))();
+		return globalThis;
 	}
 	rand(n) {
 		n = n || 1000;
@@ -181,6 +182,42 @@ class CUtil extends Obj {
 	}
 	range(n) {
 		return Array(...new Array(n)).map((x, i) => i);
+	}
+	uuidEPub() {
+		return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
+			let r = Math.random() * 16 | 0;
+			return (c === "x" ? r : r & 0x3 | 0x8).toString(16);
+		});
+	}
+	fromTo(s, a, b, inclusive = false) {
+		let cutil = this;
+		s = cutil.asString(s);
+		a = cutil.asString(a);
+		b = cutil.asString(b);
+		
+		let i0;
+		if (cutil.na(a)) {
+			i0 = 0;
+		} else {
+			i0 = s.indexOf(a);
+			if (i0 < 0) {
+				return "";
+			} else {
+				i0 += a.length;
+			}
+		}
+		
+		let i1;
+		if (cutil.na(b)) {
+			i1 = s.length;
+		} else {
+			i1 = s.indexOf(b, i0);
+			if (i1 < 0) {
+				return "";
+			}
+		}
+		
+		return (inclusive ? a : "") + s.substring(i0, i1) + (inclusive ? b : "");
 	}
 }
 
