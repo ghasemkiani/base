@@ -180,6 +180,11 @@ class CUtil extends Obj {
 		}
 		return result;
 	}
+	group(arr, n) {
+		let cutil = this;
+		let k = -cutil.asInteger(-arr.length / n);
+		return cutil.range(k).map(i => arr.slice(i * n, (i + 1) * n));
+	}
 	range(n) {
 		return Array(...new Array(n)).map((x, i) => i);
 	}
