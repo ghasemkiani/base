@@ -228,7 +228,7 @@ class CUtil extends Obj {
 		await new Promise(resolve => setTimeout(resolve, millis));
 	}
 	lookupMime(ext) {
-		ext = cutil.asString(ext).toLowerCase();
+		ext = cutil.asString(ext).toLowerCase().replace(/^\./, "");
 		return "" ||
 			["gzip"].includes(ext) ? "application/gz" :
 			["js","mjs"].includes(ext) ? "application/javascript" :
