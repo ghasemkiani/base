@@ -227,6 +227,47 @@ class CUtil extends Obj {
 	async toSleep(millis) {
 		await new Promise(resolve => setTimeout(resolve, millis));
 	}
+	lookupMime(ext) {
+		ext = cutil.asString(ext).toLowerCase();
+		return "" ||
+			["gzip"].includes(ext) ? "application/gz" :
+			["js","mjs"].includes(ext) ? "application/javascript" :
+			["json"].includes(ext) ? "application/json" :
+			["cjs"].includes(ext) ? "application/node" :
+			["xml","xsl","xsd","rng"].includes(ext) ? "application/xml" :
+			["xhtml","xht"].includes(ext) ? "application/xhtml+xml" :
+			["svg","svgz"].includes(ext) ? "application/svg+xml" :
+			["rar"].includes(ext) ? "application/vnd.rar" :
+			["dtd"].includes(ext) ? "application/xml-dtd" :
+			["zip"].includes(ext) ? "application/zip" :
+			["bmp"].includes(ext) ? "image/bmp" :
+			["emf"].includes(ext) ? "image/emf" :
+			["gif"].includes(ext) ? "image/gif" :
+			["jpeg","jpg","jpe"].includes(ext) ? "image/jpeg" :
+			["png"].includes(ext) ? "image/png" :
+			["tif","tiff"].includes(ext) ? "image/tiff" :
+			["psd"].includes(ext) ? "image/vnd.adobe.photoshop" :
+			["djvu","djv"].includes(ext) ? "image/djvu" :
+			["ico"].includes(ext) ? "image/x-icon" :
+			["mdi"].includes(ext) ? "image/vnd.ms-modi" :
+			["webp"].includes(ext) ? "image/webp" :
+			["wmf"].includes(ext) ? "image/wmf" :
+			["css"].includes(ext) ? "text/css" :
+			["html","htm","shtml"].includes(ext) ? "text/html" :
+			["markdown","md"].includes(ext) ? "text/markdown" :
+			["mml"].includes(ext) ? "text/mathml" :
+			["rtf"].includes(ext) ? "text/rtf" :
+			["uri","uris","urls"].includes(ext) ? "text/uri-list" :
+			["vcard"].includes(ext) ? "text/vcard" :
+			["sub"].includes(ext) ? "text/vnd.dvb.subtitle" :
+			["java"].includes(ext) ? "text/x-java-source" :
+			["mkd"].includes(ext) ? "text/x-markdown" :
+			["p","pas"].includes(ext) ? "text/x-pascal" :
+			["srt"].includes(ext) ? "text/x-subrip" :
+			["vcf"].includes(ext) ? "text/x-vcard" :
+			["txt","text","conf","def","list","log","in","ini"].includes(ext) ? "text/plain" :
+			null;
+	}
 }
 
 let cutil = new CUtil();
