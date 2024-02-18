@@ -186,7 +186,11 @@ class CUtil extends Obj {
 		return cutil.range(k).map(i => arr.slice(i * n, (i + 1) * n));
 	}
 	range(n) {
-		return Array(...new Array(n)).map((x, i) => i);
+		let array = new Array(n);
+		for (let i = 0; i < n; i++) {
+			array[i] = i;
+		}
+		return array;
 	}
 	uuidEPub() {
 		return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
@@ -265,6 +269,9 @@ class CUtil extends Obj {
 			["p","pas"].includes(ext) ? "text/x-pascal" :
 			["srt"].includes(ext) ? "text/x-subrip" :
 			["vcf"].includes(ext) ? "text/x-vcard" :
+			["ncx"].includes(ext) ? "application/x-dtbncx+xml" :
+			["opf"].includes(ext) ? "application/oebps-package+xml" :
+			["epub"].includes(ext) ? "application/epub+zip" :
 			["txt","text","conf","def","list","log","in","ini"].includes(ext) ? "text/plain" :
 			null;
 	}
