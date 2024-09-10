@@ -309,6 +309,36 @@ class CUtil extends Obj {
     }
     return null;
   }
+  df(date, timeZone = "Asia/Tehran") {
+    return [
+      [
+        new Intl.DateTimeFormat("en-US", { timeZone, year: "numeric" }).format(
+          date
+        ),
+        new Intl.DateTimeFormat("en-US", { timeZone, month: "2-digit" }).format(
+          date
+        ),
+        new Intl.DateTimeFormat("en-US", { timeZone, day: "2-digit" }).format(
+          date
+        ),
+      ].join("-"),
+      [
+        new Intl.DateTimeFormat("en-US", {
+          timeZone,
+          hour: "2-digit",
+          hour12: false,
+        }).format(date),
+        new Intl.DateTimeFormat("en-US", {
+          timeZone,
+          minute: "2-digit",
+        }).format(date),
+        new Intl.DateTimeFormat("en-US", {
+          timeZone,
+          second: "2-digit",
+        }).format(date),
+      ].join(":"),
+    ].join(" ");
+  }
 }
 
 let cutil = new CUtil();
