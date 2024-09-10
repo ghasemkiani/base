@@ -309,7 +309,7 @@ class CUtil extends Obj {
     }
     return null;
   }
-  df(date, timeZone = "Asia/Tehran") {
+  df(date = new Date(), timeZone = "Asia/Tehran") {
     return [
       [
         new Intl.DateTimeFormat("en-US", { timeZone, year: "numeric" }).format(
