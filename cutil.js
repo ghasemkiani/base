@@ -315,27 +315,33 @@ class CUtil extends Obj {
         new Intl.DateTimeFormat("en-US", { timeZone, year: "numeric" }).format(
           date
         ),
-        new Intl.DateTimeFormat("en-US", { timeZone, month: "2-digit" }).format(
-          date
-        ),
-        new Intl.DateTimeFormat("en-US", { timeZone, day: "2-digit" }).format(
-          date
-        ),
+        new Intl.DateTimeFormat("en-US", { timeZone, month: "2-digit" })
+          .format(date)
+          .padStart(2, "0"),
+        new Intl.DateTimeFormat("en-US", { timeZone, day: "2-digit" })
+          .format(date)
+          .padStart(2, "0"),
       ].join("-"),
       [
         new Intl.DateTimeFormat("en-US", {
           timeZone,
           hour: "2-digit",
           hour12: false,
-        }).format(date),
+        })
+          .format(date)
+          .padStart(2, "0"),
         new Intl.DateTimeFormat("en-US", {
           timeZone,
           minute: "2-digit",
-        }).format(date),
+        })
+          .format(date)
+          .padStart(2, "0"),
         new Intl.DateTimeFormat("en-US", {
           timeZone,
           second: "2-digit",
-        }).format(date),
+        })
+          .format(date)
+          .padStart(2, "0"),
       ].join(":"),
     ].join(" ");
   }

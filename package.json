@@ -1,6 +1,6 @@
 {
 	"name": "@ghasemkiani/base",
-	"version": "3.3.18",
+	"version": "3.3.19",
 	"description": "Base functionality for my NodeJS programs",
 	"repository": {
 		"type": "git",
