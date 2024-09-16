@@ -310,40 +310,39 @@ class CUtil extends Obj {
     return null;
   }
   df(date = new Date(), timeZone = "Asia/Tehran") {
-    return [
-      [
-        new Intl.DateTimeFormat("en-US", { timeZone, year: "numeric" }).format(
-          date
-        ),
-        new Intl.DateTimeFormat("en-US", { timeZone, month: "2-digit" })
-          .format(date)
-          .padStart(2, "0"),
-        new Intl.DateTimeFormat("en-US", { timeZone, day: "2-digit" })
-          .format(date)
-          .padStart(2, "0"),
-      ].join("-"),
-      [
-        new Intl.DateTimeFormat("en-US", {
-          timeZone,
-          hour: "2-digit",
-          hour12: false,
-        })
-          .format(date)
-          .padStart(2, "0"),
-        new Intl.DateTimeFormat("en-US", {
-          timeZone,
-          minute: "2-digit",
-        })
-          .format(date)
-          .padStart(2, "0"),
-        new Intl.DateTimeFormat("en-US", {
-          timeZone,
-          second: "2-digit",
-        })
-          .format(date)
-          .padStart(2, "0"),
-      ].join(":"),
-    ].join(" ");
+    let yyyy = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      year: "numeric",
+    }).format(date);
+    let mm = new Intl.DateTimeFormat("en-US", { timeZone, month: "2-digit" })
+      .format(date)
+      .padStart(2, "0");
+    let dd = new Intl.DateTimeFormat("en-US", { timeZone, day: "2-digit" })
+      .format(date)
+      .padStart(2, "0");
+    let HH = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      hour: "2-digit",
+      hour12: false,
+    })
+      .format(date)
+      .padStart(2, "0");
+    if (HH === "24") {
+      HH = "00";
+    }
+    let MM = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      minute: "2-digit",
+    })
+      .format(date)
+      .padStart(2, "0");
+    let ss = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      second: "2-digit",
+    })
+      .format(date)
+      .padStart(2, "0");
+    return [[yyyy, mm, dd].join("-"), [HH, MM, ss].join(":")].join(" ");
   }
 }
 
