@@ -1,6 +1,6 @@
 {
 	"name": "@ghasemkiani/base",
-	"version": "3.3.20",
+	"version": "3.3.21",
 	"description": "Base functionality for my NodeJS programs",
 	"repository": {
 		"type": "git",
@@ -8,6 +8,9 @@
 	},
 	"type": "module",
 	"main": "index.js",
+	"exports": {
+		".": "./index.js"
+	},
 	"scripts": {
 		"test": "node --test"
 	},

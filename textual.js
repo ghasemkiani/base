@@ -5,7 +5,7 @@ import { serializable } from "./serializable.js";
 class Textual extends cutil.mixin(Obj, serializable) {
   static {
     cutil.extend(this.prototype, {
-      jsonIndent: null,
+      jsonIndent: 2,
     });
   }
   get json() {

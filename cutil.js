@@ -28,15 +28,13 @@ class CUtil extends Obj {
     return typeof x === "string";
   }
   isNumber(x) {
-    return (
-      !isNaN(x) &&
-      !this.isNull(x) &&
-      !this.isUndefined(x) &&
-      !this.isEmptyString(x)
-    );
+    return this.isBigInt(x) || (!isNaN(x) && this.a(x));
   }
   isInteger(x) {
     return this.isNumber(x) && x % 1 === 0;
+  }
+  isBigInt(x) {
+    return typeof x === "bigint";
   }
   isObject(x) {
     return x !== null && typeof x === "object";
@@ -51,10 +49,13 @@ class CUtil extends Obj {
     return this.isNil(x) ? "" : String(x);
   }
   asNumber(x) {
-    return isNaN(x) ? 0 : Number(x);
+    return this.isNumber(x) ? Number(x) : 0;
   }
   asInteger(x) {
     return Math.floor(this.asNumber(x));
+  }
+  asBigInt(x) {
+    return BigInt(this.asString(x));
   }
   asBoolean(x) {
     return x instanceof Boolean ? x.valueOf() : !!x;
@@ -116,12 +117,10 @@ class CUtil extends Obj {
     // return (new Function("return this;"))();
     return globalThis;
   }
-  rand(n) {
-    n = n || 1000;
+  rand(n = 1000) {
     return Math.floor(Math.random() * n);
   }
-  srand(n) {
-    n = n || 8;
+  srand(n = 8) {
     let a = "a".charCodeAt(0);
     let s = "";
     for (let i = 0; i < n; i++) {
