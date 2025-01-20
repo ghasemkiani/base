@@ -195,6 +195,9 @@ class CUtil extends Obj {
     }
     return array;
   }
+  shuffled(array) {
+    return this.shuffle(array.slice(0));
+  }
   clone(x) {
     return structuredClone(x);
   }
