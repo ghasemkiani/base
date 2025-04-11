@@ -259,7 +259,7 @@ class CUtil extends Obj {
     return (inclusive ? a : "") + s.substring(i0, i1) + (inclusive ? b : "");
   }
   async toSleep(millis) {
-    await new Promise((resolve) => setTimeout(resolve, millis));
+    return new Promise((resolve) => setTimeout(resolve, millis));
   }
   lookupMime(ext) {
     ext = cutil.asString(ext).toLowerCase().replace(/^\./, "");
