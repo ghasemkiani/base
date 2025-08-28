@@ -346,6 +346,68 @@ class CUtil extends Obj {
       .padStart(2, "0");
     return [[yyyy, mm, dd].join("-"), [HH, MM, ss].join(":")].join(" ");
   }
+  fd(sdate, timeZone = "Asia/Tehran") {
+    if (this.na(sdate)) {
+      return null;
+    }
+
+    // 1. Parse the input string, which must strictly match the "df" output format.
+    const match = sdate.match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/);
+
+    if (!match) {
+      // If the format is incorrect, we can't reliably determine the date
+      // for a specific timezone. Parsing with `new Date()` would use the
+      // system's local time, so we return null for non-compliant formats.
+      return null;
+    }
+
+    const [, year, month, day, hour, minute, second] = match.map(Number);
+
+    // 2. Create a timestamp as if the input components were in UTC.
+    // This serves as a fixed point in time (an "anchor") to calculate the offset from.
+    const guessTimestamp = Date.UTC(year, month - 1, day, hour, minute, second);
+
+    // 3. To find the true timezone offset, we format our anchor time using the
+    // target timezone and observe the difference in the resulting wall time.
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: false, // Use 24-hour cycle for simplicity
+    });
+
+    const parts = formatter.formatToParts(new Date(guessTimestamp));
+    const tzParts = parts.reduce((acc, part) => {
+      if (part.type !== "literal") {
+        acc[part.type] = parseInt(part.value, 10);
+      }
+      return acc;
+    }, {});
+
+    // 4. Convert the resulting timezone-specific wall time parts back into a UTC timestamp.
+    // Note: `Date.UTC` correctly handles potential "24" hour values from formatToParts.
+    const wallTimeAsUTCTimestamp = Date.UTC(
+      tzParts.year,
+      tzParts.month - 1,
+      tzParts.day,
+      tzParts.hour,
+      tzParts.minute,
+      tzParts.second
+    );
+
+    // 5. The offset is the difference between the two UTC-based timestamps.
+    const offset = wallTimeAsUTCTimestamp - guessTimestamp;
+
+    // 6. The correct UTC timestamp is our initial anchor timestamp minus the calculated offset.
+    const correctTimestamp = guessTimestamp - offset;
+
+    // 7. Return the final Date object from the correct timestamp.
+    return new Date(correctTimestamp);
+  }
 }
 
 let cutil = new CUtil();

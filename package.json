@@ -1,27 +1,27 @@
 {
-	"name": "@ghasemkiani/base",
-	"version": "3.3.23",
-	"description": "Base functionality for my NodeJS programs",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ghasemkiani/base.git"
-	},
-	"type": "module",
-	"main": "index.js",
-	"exports": {
-		".": "./index.js"
-	},
-	"scripts": {
-		"test": "node --test"
-	},
-	"keywords": [
-		"javascript",
-		"nodejs"
-	],
-	"author": "Ghasem Kiani",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/ghasemkiani/base/issues"
-	},
-	"homepage": "https://github.com/ghasemkiani/base#readme"
+  "name": "@ghasemkiani/base",
+  "version": "3.3.24",
+  "description": "Base functionality for my NodeJS programs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghasemkiani/base.git"
+  },
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Ghasem Kiani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ghasemkiani/base/issues"
+  },
+  "homepage": "https://github.com/ghasemkiani/base#readme"
 }
