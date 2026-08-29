@@ -107,12 +107,51 @@ class CUtil extends Obj {
     }
     return target;
   }
-  mixin(Obj, ...interfaces) {
+  mixin(Base, ...interfaces) {
     // interfaces are ordinary objects, not classes
-    let Class = class extends Obj {};
+    let Class = class extends Base {};
     this.extend(Class.prototype, ...interfaces);
     return Class;
   }
+  
+  Mixin(Base, ...Interfaces) {
+    // Start with the base class
+    let MixedClass = Base;
+
+    for (const Interface of Interfaces) {
+      // 1. Create an anonymous intermediary class that extends the current chain
+      const Intermediary = class extends MixedClass {};
+
+      // 2. Copy all instance methods/properties from the Interface prototype
+      // Using your robust Reflect logic to preserve getters, setters, and symbols
+      Reflect.ownKeys(Interface.prototype).forEach((key) => {
+        if (key !== 'constructor') {
+          Reflect.defineProperty(
+            Intermediary.prototype,
+            key,
+            Reflect.getOwnPropertyDescriptor(Interface.prototype, key)
+          );
+        }
+      });
+
+      // 3. Optional: Copy static methods from the Interface class itself
+      Reflect.ownKeys(Interface).forEach((key) => {
+        if (!['length', 'name', 'prototype', 'prototype'].includes(key)) {
+          Reflect.defineProperty(
+            Intermediary,
+            key,
+            Reflect.getOwnPropertyDescriptor(Interface, key)
+          );
+        }
+      });
+
+      // Move down the chain
+      MixedClass = Intermediary;
+    }
+
+    return MixedClass;
+  }
+  
   global() {
     // return (new Function("return this;"))();
     return globalThis;
@@ -221,6 +260,9 @@ class CUtil extends Obj {
       array[i] = i;
     }
     return array;
+  }
+  arrayFromTo(a, b) {
+    return this.range(b - a + 1).map(x => x + a);
   }
   uuidEPub() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
