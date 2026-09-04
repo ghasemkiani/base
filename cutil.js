@@ -19,7 +19,7 @@ class CUtil extends Obj {
     return this.isNil(x) || this.isEmptyString(x);
   }
   na(x) {
-    return this.isNilOrEmptyString(x);
+    return this.isNilOrEmptyString(x) || isNaN(x);
   }
   a(x) {
     return !this.na(x);
